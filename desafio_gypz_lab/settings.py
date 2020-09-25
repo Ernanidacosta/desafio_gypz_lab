@@ -5,6 +5,10 @@ For more information on this file, see
 https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
+
+User = dmcard
+Token = 342c2544c0ed2481b318eac1fde01c6a0f625ed2
+
 """
 import os
 from pathlib import Path
@@ -32,9 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    #    'djando_filters',
     'rest_framework',
+    'rest_framework.authtoken',
 
     'core',
 ]
@@ -122,8 +125,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication'
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticatedOrReadOnly'
-    )
+    ),
 }
