@@ -1,9 +1,7 @@
-from django.db.models.expressions import Random
-from django.urls import path, include
-from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Solicitante
 import random
+
+from .models import Solicitante
 
 
 class SolicitanteSerializer(serializers.ModelSerializer):
@@ -13,7 +11,7 @@ class SolicitanteSerializer(serializers.ModelSerializer):
 
     def aprova(self, validacao):
 
-        nota = random.randint(1, 199)
+        nota = random.randint(1, 999)
         solicitacao = Solicitante.objects.create(**validacao)
         solicitacao.pontos = nota
         solicitacao.status = True
@@ -21,22 +19,22 @@ class SolicitanteSerializer(serializers.ModelSerializer):
         if nota < 300:
             solicitacao.status = False
 
-        elif nota >= 300 and nota < 600:
+        elif 300 <= nota < 600:
             solicitacao.limite = 1000
-        
-        elif nota >= 600 and nota < 800:
-            solicitacao.limite = validacao['renda'] * 1.5
+
+        elif 600 <= nota < 800:
+            solicitacao.limite = validacao['renda'] * 0.5
             if solicitacao.limite < 1000:
                 solicitacao.limite = 1000
-        
-        elif nota >= 800 and nota <= 950:
+
+        elif 800 <= nota <= 950:
             solicitacao.limite = validacao['renda'] * 2
 
         elif nota >= 951:
             solicitacao.limite = 1000000
 
         try:
-            solicitacao.save
+            solicitacao.save()
             return solicitacao
         except:
-            return {'message': 'Ocorreu um erro na solicitação'}
+            return {'message': 'Ocorreu um Erro na Solicitação'}

@@ -1,12 +1,21 @@
 from django.db import models
+from django.forms import CharField
 
-class Solicitante(models.Model):
-    nome = models.CharField(max_length=50)
-    renda = models.FloatField()
+
+class Base(models.Model):
+    criacao = models.DateTimeField(auto_now_add=True)
+    atualizacao = models.DateTimeField(auto_now=True)
+    ativo = models.BooleanField(default=True)
+
+    class Meta:
+        abstract = True
+
+
+class Solicitante(Base):
+    nome: CharField = models.CharField(max_length=50, verbose_name='nome')
     score = models.IntegerField(default=0)
-    data  = models.DateField(auto_now_add=True)
+    renda = models.FloatField()
     limit = models.FloatField('Limite', default=0)
-    status = models.BooleanField(default=False)
 
     def __str__(self) -> str:
-        return self.nome
+        return f'{self.nome}, Limite de: {self.limit}'

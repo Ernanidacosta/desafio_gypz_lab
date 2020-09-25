@@ -1,8 +1,12 @@
-from core.serializers import SolicitanteSerializer
-from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from .models import Solicitante
+from .serializers import SolicitanteSerializer, Solicitante
 
-class SolicitanteViewSet(viewsets.ModelViewSet):
-    queryset = Solicitante.objects.all()
-    serializer_class = SolicitanteSerializer
+
+class SolicitacaoAPIView(APIView):
+
+    def get(self, request):
+        solicitacoes = Solicitante.objects.all()
+        serializer = SolicitanteSerializer(solicitacoes, many=True)
+        return Response(serializer.data)

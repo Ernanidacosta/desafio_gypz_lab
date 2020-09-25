@@ -1,5 +1,7 @@
-from rest_framework.routers import DefaultRouter
-from core.viewsets import SolicitacaoViewset
+from django.urls import include, path
+from.views import SolicitacaoAPIView
 
-solicitacao_rota = DefaultRouter()
-solicitacao_rota.register('solicitacao', SolicitacaoViewset, basename='Solicitacao')
+
+urlpatterns = [
+    path('solicitacao', SolicitacaoAPIView.as_view(), name='solicitacao'),
+]
