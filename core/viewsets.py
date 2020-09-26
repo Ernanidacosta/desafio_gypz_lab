@@ -8,8 +8,8 @@ from rest_framework.viewsets import ModelViewSet
 
 class SolicitacaoViewset(ModelViewSet):
     serializer_class = SolicitanteSerializer
-    permission_classes = [IsAuthenticated]
-    authentication_classes = (TokenAuthentication,)
+    permission_classes = IsAuthenticated
+    authentication_classes = TokenAuthentication
 
     def get_queryset(self):
         return Solicitante.objects.all()
