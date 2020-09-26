@@ -16,3 +16,11 @@ pytz==2020.1
 six==1.15.0
 sqlparse==0.3.1
 toml==0.10.1
+
+pip~=20.1.1
+wheel~=0.34.2
+lxml~=4.5.2
+docutils~=0.15.2
+wcwidth~=0.2.5
+setuptools~=49.1.0
+requests~=2.24.0
