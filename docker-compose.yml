@@ -1,0 +1,11 @@
+version: '1'
+
+services:
+  web:
+    build: .
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    container_name: desafio_gypz_lab
+    volumes:
+      - .:/desafio_gypz_lab
+    ports:
+      - "8000:8000"
