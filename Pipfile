@@ -1,0 +1,32 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+asgiref = "==3.2.10"
+attrs = "==20.2.0"
+Django = "==3.1.1"
+django-filter = "==2.3.0"
+djangorestframework = "==3.11.1"
+drf-nested-routers = "==0.91"
+iniconfig = "==1.0.1"
+Markdown = "==3.2.2"
+more-itertools = "==8.5.0"
+pluggy = "==0.13.1"
+py = "==1.9.0"
+pyparsing = "==2.4.7"
+pytest = "==6.0.2"
+pytz = "==2020.1"
+six = "==1.15.0"
+sqlparse = "==0.3.1"
+toml = "==0.10.1"
+lxml = "~=4.5.2"
+docutils = "~=0.15.2"
+wcwidth = "~=0.2.5"
+requests = "~=2.24.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
